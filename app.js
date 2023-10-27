@@ -9,6 +9,10 @@ class Note {
 class App {
     constructor() {
         this.notes = [];
+
+        this.$activeForm = document.querySelector(".active-form");
+        this.$activeForm.style.display = "block";
+        console.log(this.$activeForm);
     }
 
     addNote(id, {title, text}) {
@@ -22,6 +26,23 @@ class App {
                 note.title = title;
                 note.text = text;
             }
-        })
+            return note;
+        });
+    }
+
+    deleteNote(id) {
+        this.notes = this.notes.filter((note) => note.id != id);
+    }
+
+    displayNotes() {
+        this.notes.map((note) =>
+            console.log(`
+        ID: ${note.id}
+        Title: ${note.title}
+        Text: ${note.text}        
+        `)
+            );
     }
 }
+
+const app = new App();
