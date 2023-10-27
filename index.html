@@ -63,7 +63,7 @@
             <span class="material-symbols-outlined hover">archive</span>
             <span class="material-symbols-outlined hover">delete</span>
         </div>
-        <div class="form-container">
+        <div class="form-container inactive-form">
             <form>
                 <input class="note-text" type="text" placeholder="Take a note...">
                 <div class="form-actions">
@@ -85,8 +85,8 @@
 
         <div class="form-container active-form">
             <form>
-                <input type="text" class="note-title" placeholder="title">
-                <input class="note-text" type="text" placeholder="Take a note...">
+                <input id="note-title" type="text" class="note-title" placeholder="title">
+                <input id="note-text" class="note-text" type="text" placeholder="Take a note...">
                 <div class="form-actions">
                     <div class="icons">
                         <div class="tooltip">
@@ -217,6 +217,11 @@
         </div>
     </main>
 
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"
+      integrity="sha512-AvtLzKgbVcTZJ0QZ3nLJoTGN2wiE/emjebM9xneyqhtEBRTsNB+8oeQGkOmyOF+gnJd7k3Zvnghs9m6EuTpTEw=="
+      crossorigin="anonymous"
+    ></script>
     <script src="app.js"></script>
 </body>
 </html>
