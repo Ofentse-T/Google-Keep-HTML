@@ -15,26 +15,36 @@ class App {
         this.$noteTitle = document.querySelector("#note-title");
         this.$noteText = document.querySelector("#note-text");
         this.$notes = document.querySelector(".notes");
-
-        this.addEventListeners();
+        this.$form = document.querySelector("#form");
 
         this.addEventListeners();
     }
 
     addEventListeners() {
-        document.body.addEventListener("click", () => {
+        document.body.addEventListener("click", (event) => {
             this.handleFormClick(event);
+        })
+
+        this.$form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const title = this.$noteTitle.value;
+            const text = this.$noteText.value;
+            this.addNote({title, text});
+            this.closeActiveForm();
         })
     }
 
     handleFormClick(event) {
         const isActiveFormClickedOn = this.$activeForm.contains(event.target);
         const isInActiveFormClickedOn = this.$inactiveForm.contains(event.target);
+        const title = this.$noteTitle.value;
+        const text = this.$noteText.value;
 
         if(isInActiveFormClickedOn) {
             this.openActiveForm();
         }
         else if(!isInActiveFormClickedOn && !isActiveFormClickedOn) {
+            this.addNote({title, text});
             this.closeActiveForm();
         }
     }
